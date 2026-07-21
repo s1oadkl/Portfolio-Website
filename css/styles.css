@@ -765,19 +765,6 @@ textarea {
   color: #ffffff;
 }
 
-.contact-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  background: #fff3d8;
-  color: #010000;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
 .contact-panel h2 {
   margin: 0 0 1rem;
   font-size: clamp(2rem, 3vw, 2.6rem);
