@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 
+<!--
+  ABOUT PAGE
+  Purpose: Education, background, and current learning information.
+
+  Editing guide:
+  - Text with data-i18n is translated in js/translations.js.
+  - Layout, colors, spacing, and responsive rules are in css/styles.css.
+  - Shared interactions are controlled by js/script.js.
+-->
+
 <html lang="ja">
 
 <head>
+  <!-- Page metadata, favicon, web fonts, and the main stylesheet -->
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>About | Kumar Shrestha</title>
@@ -18,6 +29,7 @@
 </head>
 
 <body class="page page-about" data-page="about">
+  <!-- Shared header: logo, navigation links, and language buttons -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
@@ -35,6 +47,7 @@
     </div>
   </header>
   <main>
+    <!-- About introduction and information cards -->
     <section class="section about-section">
       <div class="container about-grid">
         <div class="about-text">
@@ -46,6 +59,7 @@
             every day.
           </p>
         </div>
+        <!-- Education and current-learning cards -->
         <div class="cards-grid">
           <article class="info-card">
             <h3 data-i18n="about.educationTitle">Education</h3>
@@ -73,16 +87,19 @@
       </div>
     </section>
   </main>
+  <!-- Shared footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Floating button shown by script.js after the visitor scrolls down -->
   <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
     ↑
   </button>
 
+  <!-- Load translations first, then the shared website behavior -->
   <script src="js/translations.js"></script>
   <script src="js/script.js"></script>
 </body>

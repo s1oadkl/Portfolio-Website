@@ -1,3 +1,20 @@
+/*
+  PORTFOLIO WEBSITE STYLES
+
+  Editing guide:
+  - Global colors and fonts are near the top.
+  - Page-specific sections are grouped under large section comments.
+  - Skill bar widths use .fill-* classes and should match skills.html.
+  - Responsive rules are grouped near the bottom.
+  - The back-to-top button styles are at the end.
+
+  Main breakpoints:
+  - 1050px: navigation wraps to a new row.
+  - 980px: two-column page layouts become one column.
+  - 720px: mobile layout and spacing.
+*/
+
+/* ==================== Global Settings ==================== */
 :root {
   color-scheme: light;
   font-family: "Inter", "Noto Sans JP", system-ui,
@@ -29,6 +46,7 @@ body {
     #f7f5ef;
 }
 
+/* Language-specific font order and line height */
 html[lang="en"] body {
   font-family: "Inter", "Noto Sans JP", system-ui,
     -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -54,11 +72,13 @@ textarea {
   font: inherit;
 }
 
+/* Shared centered content container */
 .container {
   width: min(1180px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
+/* ==================== Header and Navigation ==================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -115,6 +135,8 @@ textarea {
   color: #0f172a;
 }
 
+/* ==================== Home Page ==================== */
+/* Hero layout and home overview cards */
 .hero-section {
   padding: 5rem 0 3rem;
   min-height: calc(100vh - 104px);
@@ -328,7 +350,7 @@ html[lang="ja"] .hero-title {
   }
 }
 
-/* -------------- Hero Section -------------- */
+/* Hero illustration and code badge */
 .hero-visual {
   position: relative;
 }
@@ -390,12 +412,13 @@ html[lang="ja"] .hero-title {
   font-size: 1rem;
 }
 
+/* Shared vertical spacing used by inner pages */
 .section {
   padding: 5rem 0;
 }
 
 
-/* -------------- About Section -------------- */
+/* ==================== About Page ==================== */
 .about-section {
   background: #ffffff;
 }
@@ -450,7 +473,7 @@ html[lang="ja"] .hero-title {
 }
 
 
-/* -------------- Skills Section -------------- */
+/* ==================== Skills Page ==================== */
 .skills-section {
   background: #f7f5ef;
 }
@@ -570,7 +593,7 @@ html[lang="ja"] .hero-title {
   background: linear-gradient(90deg, #ec4899, #f472b6);
 }
 
-/* -------------- Projects Section -------------- */
+/* ==================== Projects Page ==================== */
 .projects-section {
   background: #ffffff;
 }
@@ -780,45 +803,7 @@ html[lang="ja"] .hero-title {
   background: linear-gradient(135deg, #f97316, #ef4444);
 }
 
-/* .project-preview-1 {
-  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-}
-
-.project-preview-2 {
-  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-}
-
-.project-preview-3 {
-  background: linear-gradient(135deg, #f97316, #fb923c);
-}
-
-.project-preview-4 {
-  background: linear-gradient(135deg, #22c55e, #4ade80);
-}
-
-.project-preview-5 {
-  background: linear-gradient(135deg, #fb7185, #f472b6);
-}
-
-.project-preview-6 {
-  background: linear-gradient(135deg, #38bdf8, #60a5fa);
-}
-
-.project-preview-7 {
-  background: linear-gradient(135deg, #facc15, #fbbf24);
-}
-
-.project-preview-8 {
-  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-}
-
-.project-preview-9 {
-  background: linear-gradient(135deg, #ec4899, #f472b6);
-} */
-
-
-
-/* -------------- Contact Section -------------- */
+/* ==================== Contact Page ==================== */
 .contact-section {
   background: #f7f5ef;
 }
@@ -985,6 +970,7 @@ html[lang="ja"] .contact-panel .eyebrow {
   overflow: hidden;
 }
 
+/* ==================== Footer ==================== */
 .site-footer {
   padding: 2rem 0 2.5rem;
 }
@@ -995,6 +981,8 @@ html[lang="ja"] .contact-panel .eyebrow {
   font-size: 0.95rem;
 }
 
+/* ==================== Responsive Layout ==================== */
+/* Tablet: stack the main two-column sections */
 @media (max-width: 980px) {
 
   .hero-grid,
@@ -1008,6 +996,7 @@ html[lang="ja"] .contact-panel .eyebrow {
   }
 }
 
+/* Mobile: simplify grids and hero sizing */
 @media (max-width: 720px) {
   .site-header {
     padding: 0 0.5rem;
@@ -1040,6 +1029,7 @@ html[lang="ja"] .contact-panel .eyebrow {
   }
 }
 
+/* Optional/legacy layouts that also stack on smaller screens */
 @media (max-width: 860px) {
 
   .section-grid,
@@ -1048,6 +1038,7 @@ html[lang="ja"] .contact-panel .eyebrow {
   }
 }
 
+/* Mobile header spacing and navigation wrapping */
 @media (max-width: 720px) {
   .header-inner {
     flex-direction: column;
@@ -1066,7 +1057,7 @@ html[lang="ja"] .contact-panel .eyebrow {
 }
 
 
-/* Bilingual layout improvements */
+/* ==================== Bilingual Layout Adjustments ==================== */
 .header-inner {
   flex-wrap: wrap;
 }
@@ -1102,7 +1093,7 @@ html[lang="ja"] .eyebrow {
   }
 }
 
-/* -------------- Back to Top Button -------------- */
+/* ==================== Back-to-Top Button ==================== */
 
 .back-to-top {
   position: fixed;

@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 
+<!--
+  PROJECTS PAGE
+  Purpose: Project categories and project cards with GitHub links.
+
+  Editing guide:
+  - Text with data-i18n is translated in js/translations.js.
+  - Layout, colors, spacing, and responsive rules are in css/styles.css.
+  - Shared interactions are controlled by js/script.js.
+-->
+
 <html lang="ja">
 
 <head>
+  <!-- Page metadata, favicon, web fonts, and the main stylesheet -->
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Learning Projects | Kumar Shrestha</title>
@@ -18,6 +29,7 @@
 </head>
 
 <body class="page page-projects" data-page="projects">
+  <!-- Shared header: logo, navigation links, and language buttons -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
@@ -35,6 +47,7 @@
     </div>
   </header>
   <main>
+    <!-- Project introduction, category shortcuts, and project cards -->
     <section class="section projects-section">
       <div class="container">
         <div class="section-heading">
@@ -45,14 +58,11 @@
             computer tools, design software, and creative practice.
           </p>
         </div>
-        <!-- <div class="project-filters">
-            <button class="filter active" data-filter="all">All</button>
-            <button class="filter" data-filter="web">Web</button>
-            <button class="filter" data-filter="python">Python</button>
-            <button class="filter" data-filter="tools">Tools</button>
-            <button class="filter" data-filter="design">Design</button>
-            <button class="filter" data-filter="other">Other</button>
-          </div> -->
+        <!-- Future option: add filter buttons here after implementing filter logic in js/script.js. -->
+        <!--
+          Category shortcuts:
+          Each href must match the id of a project section below.
+        -->
         <div class="category-grid">
           <a class="category-card" href="#web-projects">
             <span>01</span>
@@ -80,6 +90,7 @@
             <p data-i18n="projects.category.otherText">Video editing and creative practice work.</p>
           </a>
         </div>
+        <!-- Web development projects -->
         <section class="project-category-section" id="web-projects">
           <div class="category-heading">
             <p class="eyebrow" data-i18n="projects.section.webEyebrow">Web</p>
@@ -119,6 +130,7 @@
             </article>
           </div>
         </section>
+        <!-- Python programming projects -->
         <section class="project-category-section" id="python-projects">
           <div class="category-heading">
             <p class="eyebrow" data-i18n="projects.section.pythonEyebrow">Python</p>
@@ -161,6 +173,7 @@
             </article>
           </div>
         </section>
+        <!-- Computer tools, Linux, and Microsoft Office projects -->
         <section class="project-category-section" id="tools-projects">
           <div class="category-heading">
             <p class="eyebrow" data-i18n="projects.section.toolsEyebrow">Tools</p>
@@ -197,6 +210,7 @@
             </article>
           </div>
         </section>
+        <!-- Photoshop, Illustrator, and Figma projects -->
         <section class="project-category-section" id="design-projects">
           <div class="category-heading">
             <p class="eyebrow" data-i18n="projects.section.designEyebrow">Design</p>
@@ -253,6 +267,7 @@
             </article>
           </div>
         </section>
+        <!-- Video editing and other creative projects -->
         <section class="project-category-section" id="other-projects">
           <div class="category-heading">
             <p class="eyebrow" data-i18n="projects.section.otherEyebrow">Other</p>
@@ -275,111 +290,23 @@
             </article>
           </div>
         </section>
-        <!-- <div class="project-grid">
-            <article class="project-card" data-category="web">
-              <div class="project-preview project-preview-1">
-                <span>Portfolio Website</span>
-              </div>
-              <div class="project-body">
-                <h3>Portfolio Website</h3>
-                <p>HTML, CSS, JavaScript <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="python">
-              <div class="project-preview project-preview-2">
-                <span>Python Calculator</span>
-              </div>
-              <div class="project-body">
-                <h3>Python Calculator</h3>
-                <p>Python / Beginner Project <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="python">
-              <div class="project-preview project-preview-3">
-                <span>Student Grade System</span>
-              </div>
-              <div class="project-body">
-                <h3>Student Grade System</h3>
-                <p>Python / Self Practice <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="other">
-              <div class="project-preview project-preview-4">
-                <span>Microsoft Office Report</span>
-              </div>
-              <div class="project-body">
-                <h3>Microsoft Office Report</h3>
-                <p>Microsoft Word, Excel, PowerPoint <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="tools">
-              <div class="project-preview project-preview-5">
-                <span>Linux Command Practice</span>
-              </div>
-              <div class="project-body">
-                <h3>Linux Command Practice</h3>
-                <p>Linux / Terminal Basics <br> Status: Learning</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="other">
-              <div class="project-preview project-preview-6">
-                <span>Video Editing Practice</span>
-              </div>
-              <div class="project-body">
-                <h3>Video Editing Practice</h3>
-                <p>Editing Basics <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="design">
-              <div class="project-preview project-preview-7">
-                <span>Photoshop Practice</span>
-              </div>
-              <div class="project-body">
-                <h3>Photoshop Practice</h3>
-                <p>Photoshop / Design <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="design">
-              <div class="project-preview project-preview-8">
-                <span>Illustrator Practice</span>
-              </div>
-              <div class="project-body">
-                <h3>Illustrator Practice</h3>
-                <p>Illustrator / Design <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="design">
-              <div class="project-preview project-preview-9">
-                <span>Figma Practice</span>
-              </div>
-              <div class="project-body">
-                <h3>Figma Practice</h3>
-                <p>Figma / UI Design <br> Status: Practice Work</p>
-              </div>
-            </article>
-
-          </div> -->
+        <!-- Add new project categories or cards above this line. -->
       </div>
     </section>
   </main>
+  <!-- Shared footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Floating button shown by script.js after the visitor scrolls down -->
   <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
     ↑
   </button>
 
+  <!-- Load translations first, then the shared website behavior -->
   <script src="js/translations.js"></script>
   <script src="js/script.js"></script>
 </body>

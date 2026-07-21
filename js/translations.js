@@ -1,5 +1,17 @@
+/*
+  WEBSITE TRANSLATIONS
+
+  Editing guide:
+  - Every key must match a data-i18n value used in the HTML files.
+  - Keep the same keys in both the English (en) and Japanese (ja) sections.
+  - Change only the text after the colon unless you are also updating the HTML.
+  - Page-title keys are used to update the browser tab title.
+*/
+
 const translations = {
+  // ==================== English ====================
   "en": {
+    // Shared navigation, language controls, and footer
     "nav.ariaLabel": "Primary navigation",
     "language.ariaLabel": "Language selection",
     "nav.home": "Home",
@@ -8,6 +20,7 @@ const translations = {
     "nav.projects": "Learning Projects",
     "nav.contact": "Contact",
     "footer.copyright": "© 2026 Kumar Shrestha. All rights reserved.",
+    // Home page
     "home.pageTitle": "Home | Kumar Shrestha",
     "home.greeting": "Hello, I'm Kumar",
     "home.title": "Modern web design and programming for your next project.",
@@ -36,6 +49,7 @@ const translations = {
     "home.card.contactTitle": "Contact",
     "home.card.contactText": "Get in touch about internships, collaborations, or web development opportunities.",
     "home.card.contactLink": "Send a Message",
+    // About page
     "about.pageTitle": "About | Kumar Shrestha",
     "about.eyebrow": "About Me",
     "about.title": "I am learning to become a professional web programmer.",
@@ -49,10 +63,12 @@ const translations = {
     "about.learningTools": "Computer Tools — Linux terminal, Git, GitHub, and Microsoft Office",
     "about.learningCreative": "Creative Skills — Photoshop, Illustrator, Figma, and video editing",
     "about.learningProjects": "Project Practice — building small projects step by step and publishing them on GitHub",
+    // Skills page
     "skills.pageTitle": "Skills | Kumar Shrestha",
     "skills.eyebrow": "My Skills",
     "skills.title": "Technologies and tools that I am currently learning.",
     "skills.videoEditing": "Video Editing",
+    // Projects page
     "projects.pageTitle": "Learning Projects | Kumar Shrestha",
     "projects.eyebrow": "Learning Projects",
     "projects.title": "Projects I am building while learning.",
@@ -112,6 +128,7 @@ const translations = {
     "projects.video.title": "Video Editing Practice",
     "projects.video.text": "Practice work created while learning basic video editing techniques and editing software.",
     "projects.video.tools": "Video Editing / Basics",
+    // Contact page and form messages
     "contact.pageTitle": "Contact | Kumar Shrestha",
     "contact.eyebrow": "Get in Touch",
     "contact.title": "Let’s create something useful together.",
@@ -134,11 +151,14 @@ const translations = {
     "contact.connectionError":
       "A connection error occurred. Please check your internet connection and try again.",
 
-      "backToTop.label": "Back to top",
+    // Back-to-top button accessibility label
+    "backToTop.label": "Back to top",
   },
 
 
+  // ==================== Japanese ====================
   "ja": {
+    // Shared navigation, language controls, and footer
     "nav.ariaLabel": "メインナビゲーション",
     "language.ariaLabel": "言語を選択",
     "nav.home": "ホーム",
@@ -147,6 +167,7 @@ const translations = {
     "nav.projects": "学習・制作プロジェクト",
     "nav.contact": "お問い合わせ",
     "footer.copyright": "© 2026 Kumar Shrestha. All rights reserved.",
+    // Home page
     "home.pageTitle": "ホーム | Kumar Shrestha",
     "home.greeting": "こんにちは、クマルです",
     "home.title": "Webデザインとプログラミングで、使いやすいWebサイトを制作します。",
@@ -175,6 +196,7 @@ const translations = {
     "home.card.contactTitle": "お問い合わせ",
     "home.card.contactText": "インターンシップ、共同制作、Web制作に関するご相談を受け付けています。",
     "home.card.contactLink": "メッセージを送る",
+    // About page
     "about.pageTitle": "自己紹介 | Kumar Shrestha",
     "about.eyebrow": "自己紹介",
     "about.title": "プロのWebプログラマーを目指して学んでいます。",
@@ -188,10 +210,12 @@ const translations = {
     "about.learningTools": "コンピューターツール — Linuxターミナル、Git、GitHub、Microsoft Office",
     "about.learningCreative": "クリエイティブスキル — Photoshop、Illustrator、Figma、動画編集",
     "about.learningProjects": "プロジェクト制作 — 小規模な学習プロジェクトを段階的に制作し、GitHubで公開",
+    // Skills page
     "skills.pageTitle": "スキル | Kumar Shrestha",
     "skills.eyebrow": "スキル",
     "skills.title": "現在学んでいる技術とツール",
     "skills.videoEditing": "動画編集",
+    // Projects page
     "projects.pageTitle": "学習・制作プロジェクト | Kumar Shrestha",
     "projects.eyebrow": "学習プロジェクト",
     "projects.title": "学習しながら制作しているプロジェクト",
@@ -251,6 +275,7 @@ const translations = {
     "projects.video.title": "動画編集練習",
     "projects.video.text": "動画編集の基本技術と編集ソフトの使い方を学びながら制作した練習作品です。",
     "projects.video.tools": "動画編集 / 基礎",
+    // Contact page and form messages
     "contact.pageTitle": "お問い合わせ | Kumar Shrestha",
     "contact.eyebrow": "お問い合わせ",
     "contact.title": "一緒に役に立つものを作りましょう。",
@@ -273,6 +298,7 @@ const translations = {
     "contact.connectionError":
       "通信エラーが発生しました。インターネット接続を確認して、もう一度お試しください。",
 
-      "backToTop.label": "ページの上部へ戻る",
+    // Back-to-top button accessibility label
+    "backToTop.label": "ページの上部へ戻る",
   }
 };
