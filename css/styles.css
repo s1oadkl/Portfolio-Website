@@ -1,13 +1,11 @@
 :root {
   color-scheme: light;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: "Inter", "Noto Sans JP", system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   background: #f7f5ef;
   color: #0f172a;
   scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 html,
@@ -17,10 +15,32 @@ body {
 }
 
 body {
-  line-height: 1.6;
-  background: radial-gradient(circle at top left, rgba(246, 225, 168, 0.24), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 25%),
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(246, 225, 168, 0.24),
+      transparent 30%),
+    radial-gradient(circle at bottom right,
+      rgba(59, 130, 246, 0.18),
+      transparent 25%),
     #f7f5ef;
+}
+
+html[lang="en"] body {
+  font-family: "Inter", "Noto Sans JP", system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+}
+
+html[lang="ja"] body {
+  font-family: "Noto Sans JP", "Inter", system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.8;
 }
 
 img {
@@ -152,7 +172,6 @@ textarea {
   text-decoration: underline;
 }
 
-
 .hero-copy {
   max-width: 560px;
 }
@@ -171,11 +190,22 @@ textarea {
   text-transform: uppercase;
 }
 
+html[lang="ja"] .eyebrow {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
 .hero-title {
   margin: 0;
   font-size: clamp(3.5rem, 5vw, 5.2rem);
   line-height: 0.92;
   letter-spacing: -0.05em;
+}
+
+html[lang="ja"] .hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
 .hero-title span {
@@ -254,6 +284,48 @@ textarea {
 .meta-item span {
   color: #64748b;
   font-size: 0.95rem;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.language-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.language-button.active {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.language-button:hover,
+.language-button:focus-visible {
+  color: #0f172a;
+}
+
+.language-button.active:hover,
+.language-button.active:focus-visible {
+  color: #ffffff;
+}
+
+@media (max-width: 720px) {
+  .language-switcher {
+    align-self: flex-start;
+  }
 }
 
 /* -------------- Hero Section -------------- */
@@ -431,7 +503,7 @@ textarea {
 
 .skill-fill {
   display: block;
-  height: 100%; 
+  height: 100%;
   border-radius: 999px;
 }
 
@@ -441,6 +513,7 @@ textarea {
   object-fit: contain;
   flex-shrink: 0;
 }
+
 .skill-label {
   display: flex;
   align-items: center;
@@ -854,6 +927,41 @@ textarea {
   cursor: pointer;
 }
 
+.form-status {
+  min-height: 1.7rem;
+  margin: 0.25rem 0 0;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  color: #15803d;
+}
+
+.form-status.error {
+  display: block;
+  color: #b91c1c;
+}
+
+.contact-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .site-footer {
   padding: 2rem 0 2.5rem;
 }
@@ -865,6 +973,7 @@ textarea {
 }
 
 @media (max-width: 980px) {
+
   .hero-grid,
   .about-grid,
   .contact-grid {
@@ -909,6 +1018,7 @@ textarea {
 }
 
 @media (max-width: 860px) {
+
   .section-grid,
   .contact-card {
     grid-template-columns: 1fr;
@@ -929,5 +1039,42 @@ textarea {
 
   .hero-section {
     padding-top: 4rem;
+  }
+}
+
+
+/* Bilingual layout improvements */
+.header-inner {
+  flex-wrap: wrap;
+}
+
+html[lang="ja"] body {
+  letter-spacing: 0.01em;
+}
+
+html[lang="ja"] .hero-title {
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+html[lang="ja"] .eyebrow {
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+
+@media (max-width: 1050px) {
+  .nav-links {
+    order: 3;
+    width: 100%;
+  }
+
+  .language-switcher {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .language-switcher {
+    margin-left: 0;
   }
 }

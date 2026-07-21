@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learning Projects | Kumar Shrestha</title>
-    <link rel="icon" href="images/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body class="page page-projects">
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="logo" href="index.html"><img src="images/Logo.png" alt="KS logo" /></a>
-        <nav class="nav-links" aria-label="Primary navigation">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="skills.html">Skills</a>
-          <a href="projects.html" class="active">Learning Projects</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Learning Projects | Kumar Shrestha</title>
+  <link href="images/favicon.png" rel="icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body class="page page-projects" data-page="projects">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
+      <nav aria-label="Primary navigation" class="nav-links" data-i18n-aria-label="nav.ariaLabel">
+        <a data-i18n="nav.home" href="index.html">Home</a>
+        <a data-i18n="nav.about" href="about.html">About</a>
+        <a data-i18n="nav.skills" href="skills.html">Skills</a>
+        <a class="active" data-i18n="nav.projects" href="projects.html">Learning Projects</a>
+        <a data-i18n="nav.contact" href="contact.html">Contact</a>
+      </nav>
+      <div aria-label="Language selection" class="language-switcher" data-i18n-aria-label="language.ariaLabel">
+        <button aria-pressed="false" class="language-button" data-lang="ja" type="button">日本語</button>
+        <button aria-pressed="false" class="language-button" data-lang="en" type="button">English</button>
       </div>
-    </header>
-
-    <main>
-      <section class="section projects-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Learning Portfolio</p>
-            <h1>Projects I’m building while learning.</h1>
-            <p>
-              These projects show my progress in web development, Python programming,
-              computer tools, design software, and creative practice.
-            </p>
-          </div>
-
-          <!-- <div class="project-filters">
+    </div>
+  </header>
+  <main>
+    <section class="section projects-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="projects.eyebrow">Learning Projects</p>
+          <h1 data-i18n="projects.title">Projects I’m building while learning.</h1>
+          <p data-i18n="projects.intro">
+            These projects show my progress in web development, Python programming,
+            computer tools, design software, and creative practice.
+          </p>
+        </div>
+        <!-- <div class="project-filters">
             <button class="filter active" data-filter="all">All</button>
             <button class="filter" data-filter="web">Web</button>
             <button class="filter" data-filter="python">Python</button>
@@ -47,252 +53,223 @@
             <button class="filter" data-filter="design">Design</button>
             <button class="filter" data-filter="other">Other</button>
           </div> -->
-
-          <div class="category-grid">
-            <a href="#web-projects" class="category-card">
-              <span>01</span>
-              <h3>Web</h3>
-              <p>Portfolio website, Cafe Website, and web layout practice.</p>
-            </a>
-            
-            <a href="#python-projects" class="category-card">
-              <span>02</span>
-              <h3>Python</h3>
-              <p>Beginner programming and logic practice.</p>
-            </a>
-            
-            <a href="#tools-projects" class="category-card">
-              <span>03</span>
-              <h3>Tools</h3>
-              <p>Office, Linux, and useful computer tools.</p>
-            </a>
-            
-            <a href="#design-projects" class="category-card">
-              <span>04</span>
-              <h3>Design</h3>
-              <p>Photoshop, Illustrator, and Figma practice.</p>
-            </a>
-            
-            <a href="#other-projects" class="category-card">
-              <span>05</span>
-              <h3>Other</h3>
-              <p>Video editing and creative practice work.</p>
-            </a>
+        <div class="category-grid">
+          <a class="category-card" href="#web-projects">
+            <span>01</span>
+            <h3 data-i18n="projects.category.webTitle">Web</h3>
+            <p data-i18n="projects.category.webText">Portfolio website, Cafe Website, and web layout practice.</p>
+          </a>
+          <a class="category-card" href="#python-projects">
+            <span>02</span>
+            <h3 data-i18n="projects.category.pythonTitle">Python</h3>
+            <p data-i18n="projects.category.pythonText">Beginner programming and logic practice.</p>
+          </a>
+          <a class="category-card" href="#tools-projects">
+            <span>03</span>
+            <h3 data-i18n="projects.category.toolsTitle">Tools</h3>
+            <p data-i18n="projects.category.toolsText">Office, Linux, and useful computer tools.</p>
+          </a>
+          <a class="category-card" href="#design-projects">
+            <span>04</span>
+            <h3 data-i18n="projects.category.designTitle">Design</h3>
+            <p data-i18n="projects.category.designText">Photoshop, Illustrator, and Figma practice.</p>
+          </a>
+          <a class="category-card" href="#other-projects">
+            <span>05</span>
+            <h3 data-i18n="projects.category.otherTitle">Other</h3>
+            <p data-i18n="projects.category.otherText">Video editing and creative practice work.</p>
+          </a>
+        </div>
+        <section class="project-category-section" id="web-projects">
+          <div class="category-heading">
+            <p class="eyebrow" data-i18n="projects.section.webEyebrow">Web</p>
+            <h2 data-i18n="projects.section.webTitle">Web Projects</h2>
           </div>
-
-          <section id="web-projects" class="project-category-section">
-            <div class="category-heading">
-              <p class="eyebrow">Web</p>
-              <h2>Web Projects</h2>
-            </div>
-            
-            <div class="project-grid">
-              <article class="project-card">
-                <div class="project-preview project-preview-1">
-                  <span>WEB</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Practice Project</span>
-                  <h3>Portfolio Website</h3>
-                  <p>
-                    A personal portfolio website created to practice responsive layout,
-                    navigation, contact form, and project organization.
-                  </p>
-                  <p class="project-tools">HTML / CSS / JavaScript</p>
-                </div>
-              </article>
-
-              <article class="project-card">
-                <div class="project-preview project-preview-1">
-                  <span>WEB</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Completed Practice Project</span>
-                  <a href="https://github.com/s1oadkl/Cafe-Website" target="_blank" class="project-link">
-                    View on GitHub
-                  </a>
-                  <h3>Cafe Website</h3>
-                  <p>
-                    A simple cafe website created to practice responsive layout and basic web design principles.
-                  </p>
-                  <p class="project-tools">HTML / CSS</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section id="python-projects" class="project-category-section">
-            <div class="category-heading">
-              <p class="eyebrow">Python</p>
-              <h2>Python Projects</h2>
-            </div>
-            
-            <div class="project-grid">
-              <article class="project-card">
-                <div class="project-preview project-preview-2">
-                  <span>PYTHON</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Completed Practice Project</span>
-                  <a href="https://github.com/s1oadkl/Python_Calculator" target="_blank" class="project-link">  
-                    View on GitHub </a>
-                  <h3>Python Calculator</h3>
-                  <p>
-                    A beginner Python project created to practice input, variables,
-                    conditions, functions, and basic calculation logic.
-                  </p>
-                  
-                  <p class="project-tools">Python</p>
-                </div>
-              </article>
-              
-              <article class="project-card">
-                <div class="project-preview project-preview-3">
-                  <span>PYTHON</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Completed Practice Project</span> 
-                  <a href="https://github.com/s1oadkl/student-grade-system" target="_blank" class="project-link">  
-                    View on GitHub </a>
-                  <h3>Student Grade System</h3>
-                  <p>
-                    A Python practice project for storing marks and calculating total
-                    scores or grades.
-                  </p>
-                  <p class="project-tools">Python / Logic Practice</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section id="tools-projects" class="project-category-section">
-            <div class="category-heading">
-              <p class="eyebrow">Tools</p>
-              <h2>Tools Projects</h2>
-            </div>
-            
-            <div class="project-grid">
-              <article class="project-card">
-                <div class="project-preview project-preview-4">
-                  <span>TOOLS</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Learning</span>
-                  <h3>Linux Command Practice</h3>
-                  <p>
-                    A practice project for learning basic Linux commands and terminal
-                    usage.
-                  </p>
-                  <p class="project-tools">Linux / Terminal Basics</p>
-                </div>
-              </article>
-
-              <article class="project-card">
-                <div class="project-preview project-preview-5">
-                  <span>TOOLS</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Practice Work</span>
-                  <h3>Microsoft Office Report</h3>
-                  <p>
-                    Practice work using Word, Excel, and PowerPoint to create documents,
-                    charts, spreadsheets, and presentations.
-                  </p>
-                  <p class="project-tools">Microsoft Office / Application</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section id="design-projects" class="project-category-section">
-            <div class="category-heading">
-              <p class="eyebrow">Design</p>
-              <h2>Design Projects</h2>
-            </div>
-            
-            <div class="project-grid">
-              <article class="project-card">
-                <div class="project-preview project-preview-6">
-                  <span>DESIGN</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Practice Work</span>
-                  <h3>Photoshop Practice</h3>
-                  <p>
-                    A practice project for learning basic Photoshop tools and design
-                    techniques.
-                  </p>
-                  <p class="project-tools">Photoshop / Design</p>
-                </div>
-              </article>
-              
-              <article class="project-card">
-                <div class="project-preview project-preview-7">
-                  <span>DESIGN</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Practice Work</span>
-                  <h3>Illustrator Practice</h3>
-                  <p>
-                    A practice project for learning basic Illustrator tools and vector
-                    design techniques.
-                  </p>
-                  <p class="project-tools">Illustrator / Design</p>
-                </div>
-              </article>
-
-              <article class="project-card">
-                <div class="project-preview project-preview-8">
-                  <span>DESIGN</span>
-                </div>
-
-                <div class="project-body">
-                  <span class="project-status">Practice Work</span>
-                  <h3>Figma Practice</h3>
-                  <p>
-                    A practice project for learning basic Figma tools and UI/UX design
-                    techniques.
-                  </p>
-                  <p class="project-tools">Figma / UI Design</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section id="other-projects" class="project-category-section">
-            <div class="category-heading">
-              <p class="eyebrow">Other</p>
-              <h2>Other Projects</h2>
-            </div>
-            
-            <div class="project-grid">
-              <article class="project-card">
-                <div class="project-preview project-preview-9">
-                  <span>OTHER</span>
-                </div>
-                
-                <div class="project-body">
-                  <span class="project-status">Practice Work</span>
-                  <h3>Video Editing Practice</h3>
-                  <p>
-                    A practice project for learning basic video editing techniques and
-                    software usage.
-                  </p>
-                  <p class="project-tools">Video Editing / Basics</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <!-- <div class="project-grid">
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview project-preview-1">
+                <span>WEB</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practice">Practice Project</span>
+                <h3 data-i18n="projects.portfolio.title">Portfolio Website</h3>
+                <p data-i18n="projects.portfolio.text">
+                  A personal portfolio website created to practice responsive layout,
+                  navigation, contact form, and project organization.
+                </p>
+                <p class="project-tools" data-i18n="projects.portfolio.tools">HTML / CSS / JavaScript</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview project-preview-1">
+                <span>WEB</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.completed">Completed Practice Project</span>
+                <a class="project-link" data-i18n="projects.viewGithub" href="https://github.com/s1oadkl/Cafe-Website"
+                  target="_blank">
+                  View on GitHub
+                </a>
+                <h3 data-i18n="projects.cafe.title">Cafe Website</h3>
+                <p data-i18n="projects.cafe.text">
+                  A simple cafe website created to practice responsive layout and basic web design principles.
+                </p>
+                <p class="project-tools" data-i18n="projects.cafe.tools">HTML / CSS</p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="project-category-section" id="python-projects">
+          <div class="category-heading">
+            <p class="eyebrow" data-i18n="projects.section.pythonEyebrow">Python</p>
+            <h2 data-i18n="projects.section.pythonTitle">Python Projects</h2>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview project-preview-2">
+                <span>PYTHON</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.completed">Completed Practice Project</span>
+                <a class="project-link" data-i18n="projects.viewGithub"
+                  href="https://github.com/s1oadkl/Python_Calculator" target="_blank">
+                  View on GitHub </a>
+                <h3 data-i18n="projects.calculator.title">Python Calculator</h3>
+                <p data-i18n="projects.calculator.text">
+                  A beginner Python project created to practice input, variables,
+                  conditions, functions, and basic calculation logic.
+                </p>
+                <p class="project-tools" data-i18n="projects.calculator.tools">Python</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview project-preview-3">
+                <span>PYTHON</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.completed">Completed Practice Project</span>
+                <a class="project-link" data-i18n="projects.viewGithub"
+                  href="https://github.com/s1oadkl/student-grade-system" target="_blank">
+                  View on GitHub </a>
+                <h3 data-i18n="projects.grade.title">Student Grade System</h3>
+                <p data-i18n="projects.grade.text">
+                  A Python practice project for storing marks and calculating total
+                  scores or grades.
+                </p>
+                <p class="project-tools" data-i18n="projects.grade.tools">Python / Logic Practice</p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="project-category-section" id="tools-projects">
+          <div class="category-heading">
+            <p class="eyebrow" data-i18n="projects.section.toolsEyebrow">Tools</p>
+            <h2 data-i18n="projects.section.toolsTitle">Tools Projects</h2>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview project-preview-4">
+                <span>TOOLS</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.learning">Learning</span>
+                <h3 data-i18n="projects.linux.title">Linux Command Practice</h3>
+                <p data-i18n="projects.linux.text">
+                  A practice project for learning basic Linux commands and terminal
+                  usage.
+                </p>
+                <p class="project-tools" data-i18n="projects.linux.tools">Linux / Terminal Basics</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview project-preview-5">
+                <span>TOOLS</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practiceWork">Practice Work</span>
+                <h3 data-i18n="projects.office.title">Microsoft Office Report</h3>
+                <p data-i18n="projects.office.text">
+                  Practice work using Word, Excel, and PowerPoint to create documents,
+                  charts, spreadsheets, and presentations.
+                </p>
+                <p class="project-tools" data-i18n="projects.office.tools">Microsoft Office / Application</p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="project-category-section" id="design-projects">
+          <div class="category-heading">
+            <p class="eyebrow" data-i18n="projects.section.designEyebrow">Design</p>
+            <h2 data-i18n="projects.section.designTitle">Design Projects</h2>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview project-preview-6">
+                <span>DESIGN</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practiceWork">Practice Work</span>
+                <h3 data-i18n="projects.photoshop.title">Photoshop Practice</h3>
+                <p data-i18n="projects.photoshop.text">
+                  A practice project for learning basic Photoshop tools and design
+                  techniques.
+                </p>
+                <p class="project-tools" data-i18n="projects.photoshop.tools">Photoshop / Design</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview project-preview-7">
+                <span>DESIGN</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practiceWork">Practice Work</span>
+                <h3 data-i18n="projects.illustrator.title">Illustrator Practice</h3>
+                <p data-i18n="projects.illustrator.text">
+                  A practice project for learning basic Illustrator tools and vector
+                  design techniques.
+                </p>
+                <p class="project-tools" data-i18n="projects.illustrator.tools">Illustrator / Design</p>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-preview project-preview-8">
+                <span>DESIGN</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practiceWork">Practice Work</span>
+                <h3 data-i18n="projects.figma.title">Figma Practice</h3>
+                <p data-i18n="projects.figma.text">
+                  A practice project for learning basic Figma tools and UI/UX design
+                  techniques.
+                </p>
+                <p class="project-tools" data-i18n="projects.figma.tools">Figma / UI Design</p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="project-category-section" id="other-projects">
+          <div class="category-heading">
+            <p class="eyebrow" data-i18n="projects.section.otherEyebrow">Other</p>
+            <h2 data-i18n="projects.section.otherTitle">Other Projects</h2>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-preview project-preview-9">
+                <span>OTHER</span>
+              </div>
+              <div class="project-body">
+                <span class="project-status" data-i18n="projects.status.practiceWork">Practice Work</span>
+                <h3 data-i18n="projects.video.title">Video Editing Practice</h3>
+                <p data-i18n="projects.video.text">
+                  A practice project for learning basic video editing techniques and
+                  software usage.
+                </p>
+                <p class="project-tools" data-i18n="projects.video.tools">Video Editing / Basics</p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!-- <div class="project-grid">
             <article class="project-card" data-category="web">
               <div class="project-preview project-preview-1">
                 <span>Portfolio Website</span>
@@ -384,16 +361,18 @@
             </article>
 
           </div> -->
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© 2026 Kumar Shrestha. All rights reserved.</p>
       </div>
-    </footer>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <script src="js/script.js"></script>
-  </body>
+
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>
