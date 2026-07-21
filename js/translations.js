@@ -133,6 +133,8 @@ const translations = {
       "Sorry, the message could not be sent. Please try again.",
     "contact.connectionError":
       "A connection error occurred. Please check your internet connection and try again.",
+
+      "backToTop.label": "Back to top",
   },
 
 
@@ -270,5 +272,7 @@ const translations = {
       "メッセージを送信できませんでした。もう一度お試しください。",
     "contact.connectionError":
       "通信エラーが発生しました。インターネット接続を確認して、もう一度お試しください。",
+
+      "backToTop.label": "ページの上部へ戻る",
   }
 };

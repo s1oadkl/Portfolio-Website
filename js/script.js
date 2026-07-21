@@ -201,6 +201,30 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFormStatusLanguage(language);
 
 
+    // Back to Top Button 
+    const backToTopButton =
+      document.querySelector("#back-to-top");
+
+    if (backToTopButton) {
+      const backToTopLabel =
+        getTranslation(
+          language,
+          "backToTop.label"
+        );
+
+      if (backToTopLabel) {
+        backToTopButton.setAttribute(
+          "aria-label",
+          backToTopLabel
+        );
+
+        backToTopButton.setAttribute(
+          "title",
+          backToTopLabel
+        );
+      }
+    }
+
     // Save selected language
     localStorage.setItem(
       "portfolioLanguage",
@@ -530,4 +554,39 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
   }
+
+  // ----------------------------------------
+  // Back to Top button
+  // ----------------------------------------
+  const backToTopButton =
+    document.querySelector("#back-to-top");
+
+  if (backToTopButton) {
+    function updateBackToTopButton() {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateBackToTopButton
+    );
+
+    backToTopButton.addEventListener(
+      "click",
+      function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    );
+
+    updateBackToTopButton();
+  }
+
+
 });
