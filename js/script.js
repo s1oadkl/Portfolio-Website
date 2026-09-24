@@ -1,566 +1,228 @@
-// ========================================
-// Portfolio Website JavaScript
-// Japanese / English language switcher
-// Formspree contact form
-// Smooth scrolling
-// Scroll animations
-// ========================================
+// ==========================================================================
+// MAIN WEBSITE SCRIPT
+// Author: Kumar Shrestha
+// Description: Controls Matrix Canvas rain animation, multi-language system,
+//              smooth anchor scrolling, Formspree AJAX, and back-to-top button.
+// ==========================================================================
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ----------------------------------------
-  // Select important HTML elements
-  // ----------------------------------------
-  const languageButtons =
-    document.querySelectorAll(".language-button");
 
-  const form =
-    document.querySelector("#contact-form");
+  // --------------------------------------------------
+  // 1. Matrix Rain Canvas Engine
+  // --------------------------------------------------
+  const canvas = document.getElementById('matrix-canvas');
+  
+  if (!canvas) {
+    console.error("Matrix Canvas Error: <canvas id='matrix-canvas'></canvas> element not found in HTML!");
+    return;
+  }
 
-  const formStatus =
-    document.querySelector("#form-status");
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    console.error("Matrix Canvas Error: Could not get 2D context.");
+    return;
+  }
 
-  const submitButton =
-    form?.querySelector('button[type="submit"]');
+  // Force canvas dimensions to fill window viewport
+  function resizeCanvas() {
+    canvas.width = window.innerWidth || document.documentElement.clientWidth || 800;
+    canvas.height = window.innerHeight || document.documentElement.clientHeight || 600;
+  }
+  
+  resizeCanvas();
 
-  // Japanese is the default language.
-  // Use the saved language when one exists.
-  let currentLanguage =
-    localStorage.getItem("portfolioLanguage") || "ja";
+  // Characters for Matrix streams (Katakana + English Alphanumeric)
+  const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+  const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const alphabet = katakana + latin;
 
+  const fontSize = 16;
+  let columns = Math.max(1, Math.floor(canvas.width / fontSize));
+  let rainDrops = Array(columns).fill(1);
 
-  // ----------------------------------------
-  // Get translated text safely
-  // ----------------------------------------
+  // Recalculate columns on window resize
+  window.addEventListener('resize', function () {
+    resizeCanvas();
+    columns = Math.max(1, Math.floor(canvas.width / fontSize));
+    rainDrops = Array(columns).fill(1);
+  });
+
+  function drawMatrix() {
+    // Semi-transparent fade overlay
+    ctx.fillStyle = 'rgba(5, 8, 5, 0.08)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00FF41';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < rainDrops.length; i++) {
+      const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+      ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+      if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        rainDrops[i] = 0;
+      }
+      rainDrops[i]++;
+    }
+  }
+
+  // Start animation loop
+  setInterval(drawMatrix, 33);
+  console.log("Matrix Canvas Engine successfully initialized and running!");
+
+  // --------------------------------------------------
+  // 2. Language Switcher Engine
+  // --------------------------------------------------
+  const languageButtons = document.querySelectorAll(".language-button");
+  const form = document.querySelector("#contact-form");
+  const formStatus = document.querySelector("#form-status");
+  const submitButton = form?.querySelector('button[type="submit"]');
+
+  let currentLanguage = localStorage.getItem("portfolioLanguage") || "ja";
+
   function getTranslation(language, key) {
-    if (
-      typeof translations === "undefined" ||
-      !translations[language] ||
-      translations[language][key] === undefined
-    ) {
+    if (typeof translations === "undefined" || !translations[language] || translations[language][key] === undefined) {
       return null;
     }
-
     return translations[language][key];
   }
 
-
-  // ----------------------------------------
-  // Translate browser tab title
-  // ----------------------------------------
   function updatePageTitle(language) {
     const pageName = document.body.dataset.page;
-
-    if (!pageName) {
-      return;
-    }
+    if (!pageName) return;
 
     const titleKey = pageName + ".pageTitle";
-
-    const translatedTitle =
-      getTranslation(language, titleKey);
+    const translatedTitle = getTranslation(language, titleKey);
 
     if (translatedTitle) {
       document.title = translatedTitle;
     }
   }
 
-
-  // ----------------------------------------
-  // Translate existing form message
-  // ----------------------------------------
   function updateFormStatusLanguage(language) {
-    if (!formStatus) {
-      return;
-    }
-
-    const statusKey =
-      formStatus.dataset.statusKey;
-
-    if (!statusKey) {
-      return;
-    }
-
-    const translatedStatus =
-      getTranslation(language, statusKey);
-
-    if (translatedStatus) {
-      formStatus.textContent =
-        translatedStatus;
-    }
+    if (!formStatus || !formStatus.dataset.statusKey) return;
+    const translatedStatus = getTranslation(language, formStatus.dataset.statusKey);
+    if (translatedStatus) formStatus.textContent = translatedStatus;
   }
 
-
-  // ----------------------------------------
-  // Change website language
-  // ----------------------------------------
   function changeLanguage(language) {
-    if (
-      typeof translations === "undefined" ||
-      !translations[language]
-    ) {
-      console.error(
-        'Translation data for "' +
-        language +
-        '" was not found.'
-      );
-
-      return;
-    }
+    if (typeof translations === "undefined" || !translations[language]) return;
 
     currentLanguage = language;
-
-    // Change the HTML language
     document.documentElement.lang = language;
 
+    document.querySelectorAll("[data-i18n]").forEach(function (element) {
+      const translatedText = getTranslation(language, element.dataset.i18n);
+      if (translatedText !== null) element.textContent = translatedText;
+    });
 
-    // Translate normal website text
-    document
-      .querySelectorAll("[data-i18n]")
-      .forEach(function (element) {
-        const translationKey =
-          element.dataset.i18n;
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+      const translatedText = getTranslation(language, element.dataset.i18nPlaceholder);
+      if (translatedText !== null) element.placeholder = translatedText;
+    });
 
-        const translatedText =
-          getTranslation(
-            language,
-            translationKey
-          );
-
-        if (translatedText !== null) {
-          element.textContent =
-            translatedText;
-        }
-      });
-
-
-    // Translate form placeholders
-    document
-      .querySelectorAll(
-        "[data-i18n-placeholder]"
-      )
-      .forEach(function (element) {
-        const translationKey =
-          element.dataset.i18nPlaceholder;
-
-        const translatedText =
-          getTranslation(
-            language,
-            translationKey
-          );
-
-        if (translatedText !== null) {
-          element.placeholder =
-            translatedText;
-        }
-      });
-
-
-    // Translate browser tab title
     updatePageTitle(language);
 
+    languageButtons.forEach(function (button) {
+      const isSelected = button.dataset.lang === language;
+      button.classList.toggle("active", isSelected);
+      button.setAttribute("aria-pressed", String(isSelected));
+    });
 
-    // Show which language button is active
-    languageButtons.forEach(
-      function (button) {
-        const isSelected =
-          button.dataset.lang === language;
-
-        button.classList.toggle(
-          "active",
-          isSelected
-        );
-
-        button.setAttribute(
-          "aria-pressed",
-          String(isSelected)
-        );
-      }
-    );
-
-
-    // Translate "Sending..." if the form
-    // is currently being submitted
-    if (
-      submitButton &&
-      submitButton.disabled
-    ) {
-      const sendingText =
-        getTranslation(
-          language,
-          "contact.sending"
-        );
-
-      if (sendingText) {
-        submitButton.textContent =
-          sendingText;
-      }
+    if (submitButton && submitButton.disabled) {
+      const sendingText = getTranslation(language, "contact.sending");
+      if (sendingText) submitButton.textContent = sendingText;
     }
 
-
-    // Translate success or error message
     updateFormStatusLanguage(language);
-
-
-    // Back to Top Button 
-    const backToTopButton =
-      document.querySelector("#back-to-top");
-
-    if (backToTopButton) {
-      const backToTopLabel =
-        getTranslation(
-          language,
-          "backToTop.label"
-        );
-
-      if (backToTopLabel) {
-        backToTopButton.setAttribute(
-          "aria-label",
-          backToTopLabel
-        );
-
-        backToTopButton.setAttribute(
-          "title",
-          backToTopLabel
-        );
-      }
-    }
-
-    // Save selected language
-    localStorage.setItem(
-      "portfolioLanguage",
-      language
-    );
+    localStorage.setItem("portfolioLanguage", language);
   }
 
+  languageButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (button.dataset.lang) changeLanguage(button.dataset.lang);
+    });
+  });
 
-  // ----------------------------------------
-  // Language button click events
-  // ----------------------------------------
-  languageButtons.forEach(
-    function (button) {
-      button.addEventListener(
-        "click",
-        function () {
-          const selectedLanguage =
-            button.dataset.lang;
-
-          if (selectedLanguage) {
-            changeLanguage(
-              selectedLanguage
-            );
-          }
-        }
-      );
-    }
-  );
-
-
-  // Load saved language or Japanese
   changeLanguage(currentLanguage);
 
+  // --------------------------------------------------
+  // 3. Smooth Anchor Link Scrolling
+  // --------------------------------------------------
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      const targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
 
-  // ----------------------------------------
-  // Smooth scrolling
-  // ----------------------------------------
-  const samePageLinks =
-    document.querySelectorAll(
-      'a[href^="#"]'
-    );
-
-  samePageLinks.forEach(
-    function (link) {
-      link.addEventListener(
-        "click",
-        function (event) {
-          const targetId =
-            link.getAttribute("href");
-
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
-
-          const targetElement =
-            document.querySelector(
-              targetId
-            );
-
-          if (targetElement) {
-            event.preventDefault();
-
-            targetElement.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
-          }
-        }
-      );
-    }
-  );
-
-
-  // ----------------------------------------
-  // Formspree contact form
-  // ----------------------------------------
-  if (form) {
-    form.addEventListener(
-      "submit",
-      async function (event) {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
         event.preventDefault();
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
 
+  // --------------------------------------------------
+  // 4. Formspree Contact Form AJAX Handler
+  // --------------------------------------------------
+  if (form) {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      if (submitButton && submitButton.disabled) return;
 
-        // Prevent multiple submissions
-        if (
-          submitButton &&
-          submitButton.disabled
-        ) {
-          return;
-        }
+      if (formStatus) {
+        formStatus.textContent = "";
+        formStatus.classList.remove("success", "error");
+        delete formStatus.dataset.statusKey;
+      }
 
+      if (submitButton) {
+        submitButton.disabled = true;
+        const sendingText = getTranslation(currentLanguage, "contact.sending");
+        submitButton.textContent = sendingText || "Sending...";
+      }
 
-        // Remove old success or error message
-        if (formStatus) {
-          formStatus.textContent = "";
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          body: formData,
+          headers: { Accept: "application/json" }
+        });
 
-          formStatus.classList.remove(
-            "success",
-            "error"
-          );
-
-          delete formStatus.dataset
-            .statusKey;
-        }
-
-
-        // Disable the submit button
-        if (submitButton) {
-          submitButton.disabled = true;
-
-          const sendingText =
-            getTranslation(
-              currentLanguage,
-              "contact.sending"
-            );
-
-          submitButton.textContent =
-            sendingText || "Sending...";
-        }
-
-
-        try {
-          const formData =
-            new FormData(form);
-
-          const response =
-            await fetch(form.action, {
-              method:
-                form.method || "POST",
-
-              body: formData,
-
-              headers: {
-                Accept:
-                  "application/json"
-              }
-            });
-
-
-          // Successful submission
-          if (response.ok) {
-            if (formStatus) {
-              formStatus.dataset
-                .statusKey =
-                "contact.success";
-
-              formStatus.classList.add(
-                "success"
-              );
-
-              const successText =
-                getTranslation(
-                  currentLanguage,
-                  "contact.success"
-                );
-
-              formStatus.textContent =
-                successText ||
-                "Thank you! Your message has been sent successfully.";
-            }
-
-
-            // Clear all form fields
-            form.reset();
-          }
-
-
-          // Formspree returned an error
-          else {
-            if (formStatus) {
-              formStatus.dataset
-                .statusKey =
-                "contact.error";
-
-              formStatus.classList.add(
-                "error"
-              );
-
-              const errorText =
-                getTranslation(
-                  currentLanguage,
-                  "contact.error"
-                );
-
-              formStatus.textContent =
-                errorText ||
-                "Sorry, the message could not be sent. Please try again.";
-            }
-          }
-        }
-
-
-        // Internet connection error
-        catch (error) {
-          console.error(
-            "Contact form error:",
-            error
-          );
-
+        if (response.ok) {
           if (formStatus) {
-            formStatus.dataset
-              .statusKey =
-              "contact.connectionError";
-
-            formStatus.classList.add(
-              "error"
-            );
-
-            const connectionErrorText =
-              getTranslation(
-                currentLanguage,
-                "contact.connectionError"
-              );
-
-            formStatus.textContent =
-              connectionErrorText ||
-              "A connection error occurred. Please try again.";
+            formStatus.dataset.statusKey = "contact.success";
+            formStatus.classList.add("success");
+            formStatus.textContent = getTranslation(currentLanguage, "contact.success") || "Thank you! Your message has been sent successfully.";
+          }
+          form.reset();
+        } else {
+          if (formStatus) {
+            formStatus.dataset.statusKey = "contact.error";
+            formStatus.classList.add("error");
+            formStatus.textContent = getTranslation(currentLanguage, "contact.error") || "Sorry, the message could not be sent. Please try again.";
           }
         }
-
-
-        // Re-enable the button
-        finally {
-          if (submitButton) {
-            submitButton.disabled =
-              false;
-
-            const sendText =
-              getTranslation(
-                currentLanguage,
-                "contact.send"
-              );
-
-            submitButton.textContent =
-              sendText ||
-              "Send Message";
-          }
+      } catch (error) {
+        if (formStatus) {
+          formStatus.dataset.statusKey = "contact.connectionError";
+          formStatus.classList.add("error");
+          formStatus.textContent = getTranslation(currentLanguage, "contact.connectionError") || "A connection error occurred. Please try again.";
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = getTranslation(currentLanguage, "contact.send") || "Send Message";
         }
       }
-    );
+    });
   }
 
-
-  // ----------------------------------------
-  // Reveal elements while scrolling
-  // ----------------------------------------
-  const revealElements =
-    document.querySelectorAll(
-      ".hero-grid, " +
-      ".about-grid, " +
-      ".skill-list, " +
-      ".project-grid, " +
-      ".contact-grid"
-    );
-
-  const prefersReducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
-
-
-  // Do not animate when the visitor
-  // prefers reduced motion
-  if (prefersReducedMotion.matches) {
-    revealElements.forEach(
-      function (element) {
-        element.classList.add(
-          "visible"
-        );
-      }
-    );
-  }
-
-
-  // Use IntersectionObserver
-  else if (
-    "IntersectionObserver" in window
-  ) {
-    const observer =
-      new IntersectionObserver(
-        function (
-          entries,
-          currentObserver
-        ) {
-          entries.forEach(
-            function (entry) {
-              if (
-                entry.isIntersecting
-              ) {
-                entry.target
-                  .classList.add(
-                    "visible"
-                  );
-
-                currentObserver
-                  .unobserve(
-                    entry.target
-                  );
-              }
-            }
-          );
-        },
-        {
-          threshold: 0.18
-        }
-      );
-
-
-    revealElements.forEach(
-      function (element) {
-        observer.observe(element);
-      }
-    );
-  }
-
-
-  // Fallback for old browsers
-  else {
-    revealElements.forEach(
-      function (element) {
-        element.classList.add(
-          "visible"
-        );
-      }
-    );
-  }
-
-  // ----------------------------------------
-  // Back to Top button
-  // ----------------------------------------
-  const backToTopButton =
-    document.querySelector("#back-to-top");
-
+  // --------------------------------------------------
+  // 5. Back-To-Top Button Visibility
+  // --------------------------------------------------
+  const backToTopButton = document.querySelector("#back-to-top");
   if (backToTopButton) {
     function updateBackToTopButton() {
       if (window.scrollY > 300) {
@@ -570,23 +232,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    window.addEventListener(
-      "scroll",
-      updateBackToTopButton
-    );
-
-    backToTopButton.addEventListener(
-      "click",
-      function () {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      }
-    );
-
+    window.addEventListener("scroll", updateBackToTopButton);
+    backToTopButton.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
     updateBackToTopButton();
   }
-
 
 });

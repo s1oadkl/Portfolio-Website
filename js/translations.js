@@ -1,17 +1,12 @@
-/*
-  WEBSITE TRANSLATIONS
-
-  Editing guide:
-  - Every key must match a data-i18n value used in the HTML files.
-  - Keep the same keys in both the English (en) and Japanese (ja) sections.
-  - Change only the text after the colon unless you are also updating the HTML.
-  - Page-title keys are used to update the browser tab title.
-*/
+/* ==========================================================================
+   WEBSITE TRANSLATION DICTIONARY
+   Author: Kumar Shrestha
+   Description: Bilingual translation dictionary for English ("en") and Japanese ("ja").
+   ========================================================================== */
 
 const translations = {
-  // ==================== English ====================
+  // ==================== English Translations ====================
   "en": {
-    // Shared navigation, language controls, and footer
     "nav.ariaLabel": "Primary navigation",
     "language.ariaLabel": "Language selection",
     "nav.home": "Home",
@@ -20,7 +15,14 @@ const translations = {
     "nav.projects": "Learning Projects",
     "nav.contact": "Contact",
     "footer.copyright": "© 2026 Kumar Shrestha. All rights reserved.",
-    // Home page
+    
+    // Home Hero Vertical & Horizontal Keys
+    "home.hero.greeting": "Hello, I'm Kumar.",
+    "home.hero.role": "Web Designer / IT Programmer",
+    "home.hero.line1": "Modern web design & programming",
+    "home.hero.line2": "Building user-friendly websites for your next project.",
+    "home.hero.line3": "Let's work together on your next project!",
+
     "home.pageTitle": "Home | Kumar Shrestha",
     "home.greeting": "Hello, I'm Kumar",
     "home.title": "Modern web design and programming for your next project.",
@@ -49,7 +51,8 @@ const translations = {
     "home.card.contactTitle": "Contact",
     "home.card.contactText": "Get in touch about internships, collaborations, or web development opportunities.",
     "home.card.contactLink": "Send a Message",
-    // About page
+    
+    // About Page
     "about.pageTitle": "About | Kumar Shrestha",
     "about.eyebrow": "About Me",
     "about.title": "I am learning to become a professional web programmer.",
@@ -63,12 +66,14 @@ const translations = {
     "about.learningTools": "Computer Tools — Linux terminal, Git, GitHub, and Microsoft Office",
     "about.learningCreative": "Creative Skills — Photoshop, Illustrator, Figma, and video editing",
     "about.learningProjects": "Project Practice — building small projects step by step and publishing them on GitHub",
-    // Skills page
+    
+    // Skills Page
     "skills.pageTitle": "Skills | Kumar Shrestha",
     "skills.eyebrow": "My Skills",
     "skills.title": "Technologies and tools that I am currently learning.",
     "skills.videoEditing": "Video Editing",
-    // Projects page
+    
+    // Learning Projects Page
     "projects.pageTitle": "Learning Projects | Kumar Shrestha",
     "projects.eyebrow": "Learning Projects",
     "projects.title": "Projects I am building while learning.",
@@ -128,7 +133,8 @@ const translations = {
     "projects.video.title": "Video Editing Practice",
     "projects.video.text": "Practice work created while learning basic video editing techniques and editing software.",
     "projects.video.tools": "Video Editing / Basics",
-    // Contact page and form messages
+    
+    // Contact Page
     "contact.pageTitle": "Contact | Kumar Shrestha",
     "contact.eyebrow": "Get in Touch",
     "contact.title": "Let’s create something useful together.",
@@ -144,21 +150,14 @@ const translations = {
     "contact.messagePlaceholder": "Write your message",
     "contact.send": "Send Message",
     "contact.sending": "Sending...",
-    "contact.success":
-      "Thank you! Your message has been sent successfully.",
-    "contact.error":
-      "Sorry, the message could not be sent. Please try again.",
-    "contact.connectionError":
-      "A connection error occurred. Please check your internet connection and try again.",
-
-    // Back-to-top button accessibility label
+    "contact.success": "Thank you! Your message has been sent successfully.",
+    "contact.error": "Sorry, the message could not be sent. Please try again.",
+    "contact.connectionError": "A connection error occurred. Please check your internet connection and try again.",
     "backToTop.label": "Back to top",
   },
 
-
-  // ==================== Japanese ====================
+  // ==================== Japanese Translations ====================
   "ja": {
-    // Shared navigation, language controls, and footer
     "nav.ariaLabel": "メインナビゲーション",
     "language.ariaLabel": "言語を選択",
     "nav.home": "ホーム",
@@ -167,7 +166,14 @@ const translations = {
     "nav.projects": "学習・制作プロジェクト",
     "nav.contact": "お問い合わせ",
     "footer.copyright": "© 2026 Kumar Shrestha. All rights reserved.",
-    // Home page
+    
+    // Home Hero Vertical & Horizontal Keys
+    "home.hero.greeting": "こんにちは、クマルです。",
+    "home.hero.role": "Webデザイナー / ITプログラマー",
+    "home.hero.line1": "Webデザインとプログラミングで",
+    "home.hero.line2": "使いやすいWebサイトを制作します。",
+    "home.hero.line3": "次回のプロジェクト一緒にしませんか？",
+
     "home.pageTitle": "ホーム | Kumar Shrestha",
     "home.greeting": "こんにちは、クマルです",
     "home.title": "Webデザインとプログラミングで、使いやすいWebサイトを制作します。",
@@ -196,7 +202,8 @@ const translations = {
     "home.card.contactTitle": "お問い合わせ",
     "home.card.contactText": "インターンシップ、共同制作、Web制作に関するご相談を受け付けています。",
     "home.card.contactLink": "メッセージを送る",
-    // About page
+    
+    // About Page
     "about.pageTitle": "自己紹介 | Kumar Shrestha",
     "about.eyebrow": "自己紹介",
     "about.title": "プロのWebプログラマーを目指して学んでいます。",
@@ -210,12 +217,14 @@ const translations = {
     "about.learningTools": "コンピューターツール — Linuxターミナル、Git、GitHub、Microsoft Office",
     "about.learningCreative": "クリエイティブスキル — Photoshop、Illustrator、Figma、動画編集",
     "about.learningProjects": "プロジェクト制作 — 小規模な学習プロジェクトを段階的に制作し、GitHubで公開",
-    // Skills page
+    
+    // Skills Page
     "skills.pageTitle": "スキル | Kumar Shrestha",
     "skills.eyebrow": "スキル",
     "skills.title": "現在学んでいる技術とツール",
     "skills.videoEditing": "動画編集",
-    // Projects page
+    
+    // Learning Projects Page
     "projects.pageTitle": "学習・制作プロジェクト | Kumar Shrestha",
     "projects.eyebrow": "学習プロジェクト",
     "projects.title": "学習しながら制作しているプロジェクト",
@@ -275,7 +284,8 @@ const translations = {
     "projects.video.title": "動画編集練習",
     "projects.video.text": "動画編集の基本技術と編集ソフトの使い方を学びながら制作した練習作品です。",
     "projects.video.tools": "動画編集 / 基礎",
-    // Contact page and form messages
+    
+    // Contact Page
     "contact.pageTitle": "お問い合わせ | Kumar Shrestha",
     "contact.eyebrow": "お問い合わせ",
     "contact.title": "一緒に役に立つものを作りましょう。",
@@ -291,14 +301,9 @@ const translations = {
     "contact.messagePlaceholder": "メッセージを入力してください",
     "contact.send": "メッセージを送信",
     "contact.sending": "送信中...",
-    "contact.success":
-      "ありがとうございます。メッセージを送信しました。",
-    "contact.error":
-      "メッセージを送信できませんでした。もう一度お試しください。",
-    "contact.connectionError":
-      "通信エラーが発生しました。インターネット接続を確認して、もう一度お試しください。",
-
-    // Back-to-top button accessibility label
+    "contact.success": "ありがとうございます。メッセージを送信しました。",
+    "contact.error": "メッセージを送信できませんでした。もう一度お試しください。",
+    "contact.connectionError": "通信エラーが発生しました。インターネット接続を確認して、もう一度お試しください。",
     "backToTop.label": "ページの上部へ戻る",
   }
 };

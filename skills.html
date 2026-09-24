@@ -1,165 +1,141 @@
 <!DOCTYPE html>
-
-<!--
-  SKILLS PAGE
-  Purpose: Skill names, icons, displayed percentages, and progress bars.
-
-  Editing guide:
-  - Text with data-i18n is translated in js/translations.js.
-  - Layout, colors, spacing, and responsive rules are in css/styles.css.
-  - Shared interactions are controlled by js/script.js.
--->
-
 <html lang="ja">
 
 <head>
-  <!-- Page metadata, favicon, web fonts, and the main stylesheet -->
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Skills | Kumar Shrestha</title>
-    <link href="images/favicon.png" rel="icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Skills | Kumar Shrestha</title>
+  <link href="images/favicon.png" rel="icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body class="page page-skills" data-page="skills">
-    <!-- Shared header: logo, navigation links, and language buttons -->
+  <canvas id="matrix-canvas"></canvas>
+
   <header class="site-header">
-        <div class="container header-inner">
-            <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
-            <nav aria-label="Primary navigation" class="nav-links" data-i18n-aria-label="nav.ariaLabel">
-                <a data-i18n="nav.home" href="index.html">Home</a>
-                <a data-i18n="nav.about" href="about.html">About</a>
-                <a class="active" data-i18n="nav.skills" href="skills.html">Skills</a>
-                <a data-i18n="nav.projects" href="projects.html">Learning Projects</a>
-                <a data-i18n="nav.contact" href="contact.html">Contact</a>
-            </nav>
-            <div aria-label="Language selection" class="language-switcher" data-i18n-aria-label="language.ariaLabel">
-                <button aria-pressed="false" class="language-button" data-lang="ja" type="button">日本語</button>
-                <button aria-pressed="false" class="language-button" data-lang="en" type="button">English</button>
-            </div>
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
+      <nav aria-label="Primary navigation" class="nav-links" data-i18n-aria-label="nav.ariaLabel">
+        <a data-i18n="nav.home" href="index.html">Home</a>
+        <a data-i18n="nav.about" href="about.html">About</a>
+        <a class="active" data-i18n="nav.skills" href="skills.html">Skills</a>
+        <a data-i18n="nav.projects" href="projects.html">Learning Projects</a>
+        <a data-i18n="nav.contact" href="contact.html">Contact</a>
+      </nav>
+      <div aria-label="Language selection" class="language-switcher" data-i18n-aria-label="language.ariaLabel">
+        <button aria-pressed="false" class="language-button" data-lang="ja" type="button">日本語</button>
+        <button aria-pressed="false" class="language-button" data-lang="en" type="button">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section skills-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="skills.eyebrow">My Skills</p>
+          <h1 data-i18n="skills.title">Technologies and tools that I am learning.</h1>
         </div>
-    </header>
-    <main>
-        <!-- Skills list and progress bars -->
-        <section class="section skills-section">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow" data-i18n="skills.eyebrow">My Skills</p>
-                    <h1 data-i18n="skills.title">Technologies and tools that I am learning.</h1>
-                </div>
-                <!--
-                    When editing a percentage:
-                    1. Change the visible .skill-value below.
-                    2. Change the matching .fill-* width in css/styles.css.
-                -->
-                <div class="skill-list">
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="HTML logo" class="skill-icon" src="images/html-icon.svg" />
-                            <span>HTML</span>
-                        </div>
-                        <span class="skill-value">95%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-html"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="CSS logo" class="skill-icon" src="images/css-icon.svg" />
-                            <span>CSS</span>
-                        </div>
-                        <span class="skill-value">90%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-css"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="JavaScript logo" class="skill-icon" src="images/js-icon.svg" />
-                            <span>JavaScript</span>
-                        </div>
-                        <span class="skill-value">10%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-js"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Python logo" class="skill-icon" src="images/python-icon.svg" />
-                            <span>Python</span>
-                        </div>
-                        <span class="skill-value">40%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-python"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Linux logo" class="skill-icon" src="images/linux-icon.svg" />
-                            <span>Linux</span>
-                        </div>
-                        <span class="skill-value">30%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-linux"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Office logo" class="skill-icon" src="images/office-icon.svg" />
-                            <span>Microsoft Office</span>
-                        </div>
-                        <span class="skill-value">90%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-office"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Video Editing logo" class="skill-icon" src="images/video-icon.svg" />
-                            <span data-i18n="skills.videoEditing">Video Editing</span>
-                        </div>
-                        <span class="skill-value">80%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-video"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Photoshop logo" class="skill-icon" src="images/photoshop-icon.svg" />
-                            <span>Photoshop</span>
-                        </div>
-                        <span class="skill-value">85%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-photoshop"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Illustrator logo" class="skill-icon" src="images/illustrator-icon.svg" />
-                            <span>Illustrator</span>
-                        </div>
-                        <span class="skill-value">85%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-illustrator"></span></div>
-                    </div>
-                    <div class="skill-row">
-                        <div class="skill-label">
-                            <img alt="Figma logo" class="skill-icon" src="images/figma-icon.svg" />
-                            <span>Figma</span>
-                        </div>
-                        <span class="skill-value">60%</span>
-                        <div class="skill-bar"><span class="skill-fill fill-figma"></span></div>
-                    </div>
-                </div>
+
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="HTML logo" class="skill-icon" src="images/html-icon.svg" />
+              <span>HTML</span>
             </div>
-        </section>
-    </main>
-    <!-- Shared footer -->
+            <span class="skill-value">95%</span>
+            <div class="skill-bar"><span class="skill-fill fill-html"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="CSS logo" class="skill-icon" src="images/css-icon.svg" />
+              <span>CSS</span>
+            </div>
+            <span class="skill-value">90%</span>
+            <div class="skill-bar"><span class="skill-fill fill-css"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="JavaScript logo" class="skill-icon" src="images/js-icon.svg" />
+              <span>JavaScript</span>
+            </div>
+            <span class="skill-value">10%</span>
+            <div class="skill-bar"><span class="skill-fill fill-js"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Python logo" class="skill-icon" src="images/python-icon.svg" />
+              <span>Python</span>
+            </div>
+            <span class="skill-value">40%</span>
+            <div class="skill-bar"><span class="skill-fill fill-python"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Linux logo" class="skill-icon" src="images/linux-icon.svg" />
+              <span>Linux</span>
+            </div>
+            <span class="skill-value">30%</span>
+            <div class="skill-bar"><span class="skill-fill fill-linux"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Office logo" class="skill-icon" src="images/office-icon.svg" />
+              <span>Microsoft Office</span>
+            </div>
+            <span class="skill-value">90%</span>
+            <div class="skill-bar"><span class="skill-fill fill-office"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Video Editing logo" class="skill-icon" src="images/video-icon.svg" />
+              <span data-i18n="skills.videoEditing">Video Editing</span>
+            </div>
+            <span class="skill-value">80%</span>
+            <div class="skill-bar"><span class="skill-fill fill-video"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Photoshop logo" class="skill-icon" src="images/photoshop-icon.svg" />
+              <span>Photoshop</span>
+            </div>
+            <span class="skill-value">85%</span>
+            <div class="skill-bar"><span class="skill-fill fill-photoshop"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Illustrator logo" class="skill-icon" src="images/illustrator-icon.svg" />
+              <span>Illustrator</span>
+            </div>
+            <span class="skill-value">85%</span>
+            <div class="skill-bar"><span class="skill-fill fill-illustrator"></span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <img alt="Figma logo" class="skill-icon" src="images/figma-icon.svg" />
+              <span>Figma</span>
+            </div>
+            <span class="skill-value">60%</span>
+            <div class="skill-bar"><span class="skill-fill fill-figma"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
-        <div class="container footer-inner">
-            <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="container footer-inner">
+      <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <!-- Floating button shown by script.js after the visitor scrolls down -->
-  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-        ↑
-    </button>
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
-
-    <!-- Load translations first, then the shared website behavior -->
   <script src="js/translations.js"></script>
-    <script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

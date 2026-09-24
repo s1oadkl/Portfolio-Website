@@ -1,28 +1,13 @@
 <!DOCTYPE html>
-
-<!--
-  CONTACT PAGE
-  Purpose: Contact details, social links, and the Formspree contact form.
-
-  Editing guide:
-  - Text with data-i18n is translated in js/translations.js.
-  - Layout, colors, spacing, and responsive rules are in css/styles.css.
-  - Shared interactions are controlled by js/script.js.
--->
-
 <html lang="ja">
 
 <head>
-  <!-- Page metadata, favicon, web fonts, and the main stylesheet -->
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Contact | Kumar Shrestha</title>
   <link href="images/favicon.png" rel="icon" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -30,7 +15,8 @@
 </head>
 
 <body class="page page-contact" data-page="contact">
-  <!-- Shared header: logo, navigation links, and language buttons -->
+  <canvas id="matrix-canvas"></canvas>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html"><img alt="KS logo" src="images/Logo.png" /></a>
@@ -47,75 +33,56 @@
       </div>
     </div>
   </header>
+
   <main>
-    <!-- Contact information and message form -->
     <section class="section contact-section">
       <div class="container contact-grid">
-        <!-- Left panel: introduction, contact details, and social profiles -->
         <div class="contact-panel">
           <p class="eyebrow" data-i18n="contact.eyebrow">Get in touch</p>
           <h1 data-i18n="contact.title">Let’s build something great together.</h1>
           <p data-i18n="contact.intro">
-            Send a message and I’ll reply as soon as possible. I’m available for
-            freelance work, internships, and collaborations.
+            Send a message and I’ll reply as soon as possible. I’m available for freelance work, internships, and
+            collaborations.
           </p>
           <ul class="contact-list">
             <li>shrestha.kumar9808@gmail.com</li>
-            <li>+81 080-6078-4959</li>
+            <li>+81 080-xxxx-xxxx</li>
             <li data-i18n="contact.location">Nagoya, Japan</li>
           </ul>
-          <!--
-            Social links:
-            Replace every YOUR-... placeholder with the real username or ID.
-          -->
           <div class="social-links">
-            <div class="social-label">
-              <a aria-label="GitHub" href="https://github.com/s1oadkl" target="_blank"><img alt="GitHub"
-                  src="images/github-icon.svg" /></a>
-              <a aria-label="Facebook" href="https://www.facebook.com/YOUR-FACEBOOK-USERNAME" target="_blank"><img
-                  alt="Facebook" src="images/facebook-icon.svg" /></a>
-              <a aria-label="Instagram" href="https://www.instagram.com/YOUR-INSTAGRAM-USERNAME" target="_blank"><img
-                  alt="Instagram" src="images/instagram-icon.svg" /></a>
-              <a aria-label="LINE" href="https://line.me/ti/p/YOUR-LINE-ID" target="_blank"><img alt="LINE"
-                  src="images/line-icon.svg" /></a>
-            </div>
+            <a aria-label="GitHub" href="https://github.com/s1oadkl" target="_blank"><img alt="GitHub"
+                src="images/github-icon.svg" /></a>
+            <a aria-label="Facebook" href="https://www.facebook.com/YOUR-FACEBOOK-USERNAME" target="_blank"><img
+                alt="Facebook" src="images/facebook-icon.svg" /></a>
+            <a aria-label="Instagram" href="https://www.instagram.com/YOUR-INSTAGRAM-USERNAME" target="_blank"><img
+                alt="Instagram" src="images/instagram-icon.svg" /></a>
+            <a aria-label="LINE" href="https://line.me/ti/p/YOUR-LINE-ID" target="_blank"><img alt="LINE"
+                src="images/line-icon.svg" /></a>
           </div>
         </div>
-        <!--
-          Contact form:
-          - The action URL is the Formspree form endpoint.
-          - Submission messages are displayed in #form-status by js/script.js.
-        -->
+
         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xbdnkywj" method="POST">
           <label>
             <span data-i18n="contact.name">Name</span>
-
             <input type="text" name="name" placeholder="Your Name" data-i18n-placeholder="contact.namePlaceholder"
               autocomplete="name" required />
           </label>
-
           <label>
             <span data-i18n="contact.email">Email</span>
-
             <input type="email" name="email" placeholder="Your Email" data-i18n-placeholder="contact.emailPlaceholder"
               autocomplete="email" required />
           </label>
-
           <label>
             <span data-i18n="contact.subject">Subject</span>
-
             <input type="text" name="subject" placeholder="Your Subject"
               data-i18n-placeholder="contact.subjectPlaceholder" required />
           </label>
-
           <label>
             <span data-i18n="contact.message">Message</span>
-
             <textarea name="message" placeholder="Your Message" data-i18n-placeholder="contact.messagePlaceholder"
               required></textarea>
           </label>
 
-          <!-- Hidden spam-protection field -->
           <div class="form-honeypot" aria-hidden="true">
             <label>
               Do not fill in this field
@@ -123,29 +90,21 @@
             </label>
           </div>
 
-          <button type="submit" class="button primary" data-i18n="contact.send">
-            Send Message
-          </button>
-
-          <!-- Empty by default; script.js inserts success or error messages here -->
+          <button type="submit" class="button primary" data-i18n="contact.send">Send Message</button>
           <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
-  <!-- Shared footer -->
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Floating button shown by script.js after the visitor scrolls down -->
-  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-    ↑
-  </button>
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
-  <!-- Load translations first, then the shared website behavior -->
   <script src="js/translations.js"></script>
   <script src="js/script.js"></script>
 </body>

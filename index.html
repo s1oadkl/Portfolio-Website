@@ -1,27 +1,13 @@
 <!DOCTYPE html>
-
-<!--
-  HOME PAGE
-  Purpose: Main introduction, portfolio overview, and links to the other pages.
-
-  Editing guide:
-  - Text with data-i18n is translated in js/translations.js.
-  - Layout, colors, spacing, and responsive rules are in css/styles.css.
-  - Shared interactions are controlled by js/script.js.
--->
-
 <html lang="ja">
 
 <head>
-  <!-- Page metadata, favicon, web fonts, and the main stylesheet -->
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Home | Kumar Shrestha</title>
   <link href="images/favicon.png" rel="icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -29,7 +15,10 @@
 </head>
 
 <body class="page page-home" data-page="home">
-  <!-- Shared header: logo, navigation links, and language buttons -->
+  <!-- Live Matrix Background Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Navigation Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html"><img alt="Kumar Shrestha logo" src="images/Logo.png" /></a>
@@ -46,28 +35,29 @@
       </div>
     </div>
   </header>
+
   <main>
-    <!-- Hero: introduction, role, call-to-action buttons, and coding illustration -->
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="container hero-grid">
+
+        <!-- Left Copy Side -->
         <div class="hero-copy">
-          <span class="eyebrow" data-i18n="home.greeting">Hello, I'm Kumar</span>
-          <h1 class="hero-title" data-i18n="home.title">
-            Modern web design and programming for your next project.
-          </h1>
-          <p class="hero-role">
-            <span data-i18n="home.webDesigner">Web Designer</span>
-            <br />
-            <span data-i18n="home.itProgrammer">IT Programmer</span>
-          </p>
-          <p class="hero-text" data-i18n="home.description">
-            I build responsive websites, user-friendly interfaces, and polished
-            online experiences using HTML, CSS, JavaScript, and Python.
-          </p>
+          <div class="hero-vertical-text">
+            <p data-i18n="home.hero.greeting">こんにちは、クマルです。</p>
+            <p data-i18n="home.hero.role">Webデザイナー / ITプログラマー</p>
+            <p data-i18n="home.hero.line1">Webデザインとプログラミングで</p>
+            <p data-i18n="home.hero.line2">使いやすいWebサイトを制作します。</p>
+            <p data-i18n="home.hero.line3">次回のプロジェクト一緒にしませんか？</p>
+          </div>
+
+          <!-- Action Buttons -->
           <div class="hero-actions">
             <a class="button primary" data-i18n="home.viewProjects" href="projects.html">View My Projects</a>
             <a class="button secondary" data-i18n="home.contactMe" href="contact.html">Contact Me</a>
           </div>
+
+          <!-- Quick Stats Cards -->
           <div class="hero-meta">
             <article class="meta-item">
               <strong data-i18n="home.meta.studentTitle">Student</strong>
@@ -83,21 +73,44 @@
             </article>
           </div>
         </div>
+
+        <!-- Right Side: Hooded Hacker Profile & Code Badge -->
         <div class="hero-visual">
-          <div class="visual-card">
-            <img alt="Code screen illustration" src="images/monitor-code.svg" />
-            <div class="code-badge">
-              <img alt="Python icon" src="images/python-icon.svg" />
-              <div>
-                <p>python main.py</p>
-                <strong>Hello, World!</strong>
+          <div class="visual-card"
+            style="display: flex; flex-direction: column; align-items: center; padding: 1.5rem; width: 100%; max-width: 380px; box-sizing: border-box;">
+
+            <!-- Profile Image -->
+            <img alt="Kumar Shrestha" src="images/pp.jpeg" class="hero-profile-img"
+              style="width: 100%; max-width: 320px; height: 380px; object-fit: cover; border-radius: 20px; border: 2px solid rgba(0, 255, 65, 0.6); box-shadow: 0 0 25px rgba(0, 255, 65, 0.25); margin-bottom: 1.25rem;" />
+
+            <!-- Code Badge (Forced Flex Alignment) -->
+            <div class="code-badge"
+              style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important; gap: 1rem !important; width: 100% !important; max-width: 320px !important; padding: 0.85rem 1.25rem !important; border-radius: 16px !important; background: #050805 !important; border: 1px solid rgba(0, 255, 65, 0.4) !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important; box-sizing: border-box !important; position: relative !important; overflow: hidden !important;">
+
+              <!-- Python Logo -->
+              <img alt="Python icon" src="images/python-icon.svg"
+                style="width: 38px !important; height: 38px !important; min-width: 38px !important; min-height: 38px !important; object-fit: contain !important; flex-shrink: 0 !important; margin: 0 !important;" />
+
+              <!-- Text Container -->
+              <div
+                style="display: flex !important; flex-direction: column !important; align-items: flex-start !important; justify-content: center !important; text-align: left !important; margin: 0 !important; padding: 0 !important;">
+                <p
+                  style="margin: 0 !important; padding: 0 !important; color: #9ca3af !important; font-size: 0.8rem !important; font-family: monospace !important; line-height: 1.2 !important; white-space: nowrap !important;">
+                  python main.py</p>
+                <strong
+                  style="margin: 0.25rem 0 0 0 !important; padding: 0 !important; color: #00ff41 !important; font-size: 0.95rem !important; font-weight: 700 !important; line-height: 1.2 !important; white-space: nowrap !important;">Hello,
+                  World!</strong>
               </div>
+
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
-    <!-- Portfolio overview: cards linking to About, Skills, Projects, and Contact -->
+
+    <!-- Overview Cards -->
     <section class="section home-overview">
       <div class="container">
         <div class="section-heading">
@@ -133,19 +146,15 @@
       </div>
     </section>
   </main>
-  <!-- Shared footer -->
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p data-i18n="footer.copyright">© 2026 Kumar Shrestha. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Floating button shown by script.js after the visitor scrolls down -->
-  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-    ↑
-  </button>
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
-  <!-- Load translations first, then the shared website behavior -->
   <script src="js/translations.js"></script>
   <script src="js/script.js"></script>
 </body>
