@@ -1,74 +1,60 @@
 // ==========================================================================
-// MAIN WEBSITE SCRIPT
 // Author: Kumar Shrestha
 // Description: Controls Matrix Canvas rain animation, multi-language system,
 //              smooth anchor scrolling, Formspree AJAX, and back-to-top button.
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", function () {
-
   // --------------------------------------------------
   // 1. Matrix Rain Canvas Engine
   // --------------------------------------------------
-  const canvas = document.getElementById('matrix-canvas');
-  
-  if (!canvas) {
-    console.error("Matrix Canvas Error: <canvas id='matrix-canvas'></canvas> element not found in HTML!");
-    return;
-  }
+  const canvas = document.getElementById("matrix-canvas");
 
-  const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    console.error("Matrix Canvas Error: Could not get 2D context.");
-    return;
-  }
-
-  // Force canvas dimensions to fill window viewport
-  function resizeCanvas() {
-    canvas.width = window.innerWidth || document.documentElement.clientWidth || 800;
-    canvas.height = window.innerHeight || document.documentElement.clientHeight || 600;
-  }
-  
-  resizeCanvas();
-
-  // Characters for Matrix streams (Katakana + English Alphanumeric)
-  const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-  const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const alphabet = katakana + latin;
-
-  const fontSize = 16;
-  let columns = Math.max(1, Math.floor(canvas.width / fontSize));
-  let rainDrops = Array(columns).fill(1);
-
-  // Recalculate columns on window resize
-  window.addEventListener('resize', function () {
-    resizeCanvas();
-    columns = Math.max(1, Math.floor(canvas.width / fontSize));
-    rainDrops = Array(columns).fill(1);
-  });
-
-  function drawMatrix() {
-    // Semi-transparent fade overlay
-    ctx.fillStyle = 'rgba(5, 8, 5, 0.08)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#00FF41';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < rainDrops.length; i++) {
-      const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-      ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-      if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        rainDrops[i] = 0;
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      function resizeCanvas() {
+        canvas.width = window.innerWidth || document.documentElement.clientWidth || 800;
+        canvas.height = window.innerHeight || document.documentElement.clientHeight || 600;
       }
-      rainDrops[i]++;
+
+      resizeCanvas();
+
+      const katakana = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン";
+      const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const alphabet = katakana + latin;
+
+      const fontSize = 16;
+      let columns = Math.max(1, Math.floor(canvas.width / fontSize));
+      let rainDrops = Array(columns).fill(1);
+
+      window.addEventListener("resize", function () {
+        resizeCanvas();
+        columns = Math.max(1, Math.floor(canvas.width / fontSize));
+        rainDrops = Array(columns).fill(1);
+      });
+
+      function drawMatrix() {
+        ctx.fillStyle = "rgba(5, 8, 5, 0.08)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00FF41";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < rainDrops.length; i++) {
+          const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+          ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+          if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+          }
+          rainDrops[i]++;
+        }
+      }
+
+      setInterval(drawMatrix, 33);
     }
   }
-
-  // Start animation loop
-  setInterval(drawMatrix, 33);
-  console.log("Matrix Canvas Engine successfully initialized and running!");
 
   // --------------------------------------------------
   // 2. Language Switcher Engine
@@ -81,7 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentLanguage = localStorage.getItem("portfolioLanguage") || "ja";
 
   function getTranslation(language, key) {
-    if (typeof translations === "undefined" || !translations[language] || translations[language][key] === undefined) {
+    if (
+      typeof translations === "undefined" ||
+      !translations[language] ||
+      translations[language][key] === undefined
+    ) {
       return null;
     }
     return translations[language][key];
@@ -101,7 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateFormStatusLanguage(language) {
     if (!formStatus || !formStatus.dataset.statusKey) return;
-    const translatedStatus = getTranslation(language, formStatus.dataset.statusKey);
+    const translatedStatus = getTranslation(
+      language,
+      formStatus.dataset.statusKey
+    );
     if (translatedStatus) formStatus.textContent = translatedStatus;
   }
 
@@ -116,10 +109,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (translatedText !== null) element.textContent = translatedText;
     });
 
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
-      const translatedText = getTranslation(language, element.dataset.i18nPlaceholder);
-      if (translatedText !== null) element.placeholder = translatedText;
-    });
+    document
+      .querySelectorAll("[data-i18n-placeholder]")
+      .forEach(function (element) {
+        const translatedText = getTranslation(
+          language,
+          element.dataset.i18nPlaceholder
+        );
+        if (translatedText !== null) element.placeholder = translatedText;
+      });
 
     updatePageTitle(language);
 
@@ -187,45 +185,52 @@ document.addEventListener("DOMContentLoaded", function () {
         const response = await fetch(form.action, {
           method: form.method || "POST",
           body: formData,
-          headers: { Accept: "application/json" }
+          headers: { Accept: "application/json" },
         });
 
         if (response.ok) {
           if (formStatus) {
             formStatus.dataset.statusKey = "contact.success";
             formStatus.classList.add("success");
-            formStatus.textContent = getTranslation(currentLanguage, "contact.success") || "Thank you! Your message has been sent successfully.";
+            formStatus.textContent =
+              getTranslation(currentLanguage, "contact.success") ||
+              "Thank you! Your message has been sent successfully.";
           }
           form.reset();
         } else {
           if (formStatus) {
             formStatus.dataset.statusKey = "contact.error";
             formStatus.classList.add("error");
-            formStatus.textContent = getTranslation(currentLanguage, "contact.error") || "Sorry, the message could not be sent. Please try again.";
+            formStatus.textContent =
+              getTranslation(currentLanguage, "contact.error") ||
+              "Sorry, the message could not be sent. Please try again.";
           }
         }
       } catch (error) {
         if (formStatus) {
           formStatus.dataset.statusKey = "contact.connectionError";
           formStatus.classList.add("error");
-          formStatus.textContent = getTranslation(currentLanguage, "contact.connectionError") || "A connection error occurred. Please try again.";
+          formStatus.textContent =
+            getTranslation(currentLanguage, "contact.connectionError") ||
+            "A connection error occurred. Please try again.";
         }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = getTranslation(currentLanguage, "contact.send") || "Send Message";
+          submitButton.textContent =
+            getTranslation(currentLanguage, "contact.send") || "Send Message";
         }
       }
     });
   }
 
   // --------------------------------------------------
-  // 5. Back-To-Top Button Visibility
+  // 5. Back-To-Top Button Engine
   // --------------------------------------------------
   const backToTopButton = document.querySelector("#back-to-top");
   if (backToTopButton) {
     function updateBackToTopButton() {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 200) {
         backToTopButton.classList.add("show");
       } else {
         backToTopButton.classList.remove("show");
@@ -233,10 +238,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener("scroll", updateBackToTopButton);
-    backToTopButton.addEventListener("click", function () {
+    
+    backToTopButton.addEventListener("click", function (e) {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
     updateBackToTopButton();
   }
 
+  // --------------------------------------------------
+  // 6. Mobile Navigation Menu Toggle Handler
+  // --------------------------------------------------
+  const menuBtn = document.querySelector(".menu-btn");
+  const navMenu = document.querySelector(".nav-links");
+
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      menuBtn.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu when clicking any nav link
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuBtn.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+        menuBtn.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
+    });
+  }
 });
